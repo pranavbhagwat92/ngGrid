@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Model } from './model';
+import { HttpClient } from "@angular/common/http";
 import { GridOptions} from 'ag-grid';
 
 @Component({
@@ -13,10 +14,14 @@ export class AppComponent {
 
   rowData = [];
 
+  private gridApi;
+  private gridColumnApi;
+
   private defaultColDef;
+  private rowSelection;
 
 
-  ngOnInit() {
+  constructor() {
 
 
 
@@ -34,11 +39,28 @@ export class AppComponent {
       console.log(i);
       let colName = colChainArr[i].columnName;
       //console.log(colName);
-      this.columnDefs.push({
-        headerName: colName, field: colName, editable: true , checkboxSelection: false
-      });
+      if(i==0){
+        this.columnDefs.push({
+          headerName: colName, field: colName, editable: true , checkboxSelection: false 
+        });
+      }else{
+        this.columnDefs.push({
+          headerName: colName, field: colName, editable: true , checkboxSelection: false 
+        });
+      }
+      
     }
-    this.defaultColDef = { resizable: true };
+
+
+    this.rowSelection = "multiple";
+      this.defaultColDef = {
+      editable: true,
+      enableValue: true,
+      sortable: true,
+      resizable: true,
+      filter: true
+    };
+    
 
     for (let i = 0; i < rowArray.length; i++) {
       for (let n = 0; n < colCellArray.length; n++) {
@@ -54,6 +76,19 @@ export class AppComponent {
     }
     console.log(this.rowData);
   }
+
+  onSelectionChanged() {
+    var selectedRows = this.gridApi.getSelectedRows();
+    var selectedRowsString = "";
+    selectedRows.forEach(function(selectedRow, index) {
+      if (index !== 0) {
+        selectedRowsString += ", ";
+      }
+      selectedRowsString += selectedRow.athlete;
+    });
+    document.querySelector("#selectedRows").innerHTML = selectedRowsString;
+  }
+
 
 }
 

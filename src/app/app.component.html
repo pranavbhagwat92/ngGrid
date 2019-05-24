@@ -3,15 +3,21 @@
 
 <ag-grid-angular
 #agGrid
-  style="width: 1600px; height: 1600px;"
+  style="width: 1400px; height: 1400px;"
   ag-grid="gridOptions"
   class="ag-theme-balham"
   [enableSorting]="true"
+  [rowDragManaged]="true"
+  [animateRows]="true"
   [enableFilter]="true"
   [pagination]="true"
+  [enableColResize]="true"
+  [rowSelection]="rowSelection"
   [rowData]="rowData"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
+  [paginationAutoPageSize]="true"
+  [pagination]="true"
   
 >
 </ag-grid-angular>
