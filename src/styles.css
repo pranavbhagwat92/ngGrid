@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 @import 'ag-grid/dist/styles/ag-grid.css';
 @import 'ag-grid/dist/styles/ag-theme-balham.css';
 
-.ui-grid-column-menu-button {
-    display: block;
-  }
+
+.ag-row-hover {
+    /* putting in !important so it overrides the theme's styling as it hovers the row also */
+    background-color: lightcyan !important;
+}
+
+.ag-column-hover {
+    background-color : lightcyan;
+}

@@ -12,7 +12,7 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AgGridModule.withComponents(null)
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
