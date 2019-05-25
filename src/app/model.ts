@@ -1,3 +1,5 @@
+import * as bcvm from "../bcvm-v2.1.0";
+
 export class Model {
 
 grid:{};
@@ -6614,10 +6616,28 @@ constructor(){
             ]
         }
     } 
-    }
+    // let gridId = 2005364;
 
+    // let env = bcvm.CreateEnvironment({
+    //     usr: "admin",
+    //     membershipId: 1000,
+    //     nhPath: "ROOT",
+    //     pwd: "0",
+    //     urlPrefix: "http://localhost:8080/BAE_VM_TESTING/rest/v1",
+    // });
+
+    // try {
+    //     env.loadGridById(gridId).then(function () {
+    //         console.log("Grid Load Successful", gridId); 
+    //     });
+    // } catch (error) {
+    //     console.log(error);
+    // }
+   
+
+    
 }
 
 
 
-
+}

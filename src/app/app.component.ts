@@ -20,6 +20,8 @@ export class AppComponent {
   private defaultColDef;
   private rowSelection;
 
+  private paginationPageSize;
+  private paginationNumberFormatter;
 
   constructor() {
 
@@ -41,11 +43,11 @@ export class AppComponent {
       //console.log(colName);
       if(i==0){
         this.columnDefs.push({
-          headerName: colName, field: colName, editable: true , checkboxSelection: false 
+          headerName: colName, field: colName, editable: true , checkboxSelection: false ,filter: "agNumberColumnFilter"
         });
       }else{
         this.columnDefs.push({
-          headerName: colName, field: colName, editable: true , checkboxSelection: false 
+          headerName: colName, field: colName, editable: true , checkboxSelection: false ,filter: "agTextColumnFilter"
         });
       }
       
@@ -60,7 +62,11 @@ export class AppComponent {
       resizable: true,
       filter: true
     };
-    
+    this.paginationPageSize = 30;
+
+    this.paginationNumberFormatter = function(params) {
+      return "[" + params.value.toLocaleString() + "]";
+    };
 
     for (let i = 0; i < rowArray.length; i++) {
       for (let n = 0; n < colCellArray.length; n++) {
@@ -77,6 +83,8 @@ export class AppComponent {
     console.log(this.rowData);
   }
 
+  
+
   onSelectionChanged() {
     var selectedRows = this.gridApi.getSelectedRows();
     var selectedRowsString = "";
@@ -91,15 +99,5 @@ export class AppComponent {
 
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
